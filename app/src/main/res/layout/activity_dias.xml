@@ -3,7 +3,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3a3a3a">
+    android:background="#CFEDD8">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,39 +16,39 @@
             android:id="@+id/tvTituloSemana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Semana del 04 – 10 de Mayo 2026"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:gravity="center"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="16dp"/>
+            android:gravity="center"
+            android:text="Semana del 04 – 10 de Mayo 2026"
+            android:textColor="#507561"
+            android:textSize="16sp" />
 
         <!-- Fila 1: LUNES y MARTES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
             <!-- LUNES -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginEnd="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LUNES"
-                    android:background="#5BC8C8"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="LUNES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvLunes"
@@ -66,21 +66,21 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MARTES"
-                    android:background="#5BC8C8"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="MARTES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvMartes"
@@ -99,28 +99,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
             <!-- MIERCOLES -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginEnd="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MIERCOLES"
-                    android:background="#E8C840"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="MIERCOLES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvMiercoles"
@@ -138,21 +138,21 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="JUEVES"
-                    android:background="#E05A5A"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="JUEVES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvJueves"
@@ -171,28 +171,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
             <!-- VIERNES -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginEnd="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="VIERNES"
-                    android:background="#5BC8C8"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="VIERNES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvViernes"
@@ -210,21 +210,21 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SABADO"
-                    android:background="#5BC8C8"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
+                    android:background="#8AC8A6"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"/>
+                    android:paddingBottom="4dp"
+                    android:text="SABADO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvSabado"
@@ -243,20 +243,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DOMINGO"
-                android:background="#5BC8C8"
-                android:textColor="#FFFFFF"
-                android:textSize="11sp"
+                android:background="#8AC8A6"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:paddingTop="4dp"
-                android:paddingBottom="4dp"/>
+                android:paddingBottom="4dp"
+                android:text="DOMINGO"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/tvDomingo"
@@ -276,11 +276,11 @@
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#8AC8A6"
             android:text="Volver"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#5CB85C"
-            android:textSize="14sp"
-            android:layout_marginBottom="20dp"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 </ScrollView>

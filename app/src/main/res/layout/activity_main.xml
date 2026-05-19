@@ -6,20 +6,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4BB633"
-    android:backgroundTint="#2E4313"
+    android:backgroundTint="#CFEDD8"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvLunes2"
+        android:layout_width="322dp"
+        android:layout_height="83dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="vacio"
+        android:textColor="#333333"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="322dp"
+        android:layout_height="21dp"
+        android:background="#8AC8A6"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="LUNES"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="325dp" />
 
     <Button
         android:id="@+id/BtnRecetarium"
         android:layout_width="204dp"
         android:layout_height="46dp"
         android:layout_marginStart="103dp"
+        android:layout_marginTop="272dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="98dp"
-        android:backgroundTint="#82C820"
+        android:layout_marginBottom="19dp"
+        android:backgroundTint="#8AC8A6"
         android:text="@string/btn_gestion"
-        app:layout_constraintBottom_toTopOf="@+id/BtnGenerarMain"
+        app:layout_constraintBottom_toTopOf="@+id/BtnHistorial"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -28,9 +58,10 @@
         android:layout_width="204dp"
         android:layout_height="46dp"
         android:layout_marginStart="103dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="436dp"
-        android:backgroundTint="#639918"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#8AC8A6"
         android:text="@string/btn_menus_semanales"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,16 +70,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="114dp"
-        android:layout_height="114dp"
+        android:layout_width="278dp"
+        android:layout_height="223dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="149dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="70dp"
+        android:contentDescription="@string/img_main_desc"
         app:layout_constraintBottom_toTopOf="@+id/BtnRecetarium"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/presence_online"
-        android:contentDescription="@string/img_main_desc" />
+        app:srcCompat="@drawable/logo_recetario" />
 </androidx.constraintlayout.widget.ConstraintLayout>

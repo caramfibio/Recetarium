@@ -3,8 +3,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#2D5A27">
+    android:background="#CFEDD8"
+    android:orientation="vertical">
 
   <ScrollView
       android:layout_width="match_parent"
@@ -22,19 +22,19 @@
           android:id="@+id/tvTituloMes"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Recetas del mes de mayo:"
-          android:textColor="#FFFFFF"
-          android:textSize="18sp"
-          android:gravity="center"
           android:layout_marginTop="16dp"
-          android:layout_marginBottom="20dp"/>
+          android:layout_marginBottom="20dp"
+          android:gravity="center"
+          android:text="Recetas del mes de mayo:"
+          android:textColor="#507561"
+          android:textSize="18sp" />
 
       <!-- Contenedor donde se añaden las semanas dinámicamente -->
       <LinearLayout
           android:id="@+id/contenedorSemanas"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical"/>
+          android:orientation="vertical" />
 
     </LinearLayout>
   </ScrollView>
@@ -45,10 +45,10 @@
       android:layout_width="160dp"
       android:layout_height="40dp"
       android:layout_gravity="center"
-      android:text="Volver"
-      android:textColor="#FFFFFF"
-      android:backgroundTint="#5CB85C"
       android:layout_marginTop="12dp"
-      android:layout_marginBottom="24dp"/>
+      android:layout_marginBottom="24dp"
+      android:backgroundTint="#8AC8A6"
+      android:text="Volver"
+      android:textColor="#8AC8A6" />
 
 </LinearLayout>

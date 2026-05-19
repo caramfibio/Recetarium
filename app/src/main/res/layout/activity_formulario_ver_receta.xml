@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#266618"
+    android:background="#CFEDD8"
     tools:context=".formulario_recetarium">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="193dp"
         android:text="@string/label_nombre_receta"
-        android:textColor="#FFFFFF"
+        android:textColor="#507561"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/etNombrePlato"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,30 +28,30 @@
         android:layout_width="138dp"
         android:layout_height="53dp"
         android:layout_marginStart="51dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="46dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#832D2D"
+        android:backgroundTint="#8AC8A6"
         android:text="@string/btn_volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnGuardarReceta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPlato" />
+        app:layout_constraintTop_toBottomOf="@+id/labelsContainer" />
 
     <Button
         android:id="@+id/btnGuardarReceta"
         android:layout_width="138dp"
         android:layout_height="53dp"
         android:layout_marginStart="46dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#6CC324"
+        android:backgroundTint="#8AC8A6"
         android:text="@string/btn_guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnVolver"
-        app:layout_constraintTop_toBottomOf="@+id/imgPlato" />
+        app:layout_constraintTop_toBottomOf="@+id/labelsContainer" />
 
     <EditText
         android:id="@+id/etNombrePlato"
@@ -60,10 +60,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="66dp"
         android:layout_marginBottom="15dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/hint_name"
         android:autofillHints="name"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,10 +77,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/label_pasos"
         android:autofillHints="postalAddress"
+        android:ems="10"
+        android:hint="@string/label_pasos"
+        android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,67 +91,35 @@
         android:id="@+id/labelsContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="69dp"
-        android:layout_marginBottom="27dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintBottom_toTopOf="@+id/textView4">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <TextView
             android:id="@+id/tvDish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="Dish:" />
+            android:text="Dish:"
+            android:textColor="#507561" />
 
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="Time:" />
+            android:text="Time:"
+            android:textColor="#507561" />
 
         <TextView
             android:id="@+id/tvFoodType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="FoodType:" />
+            android:text="FoodType:"
+            android:textColor="#507561" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imgPlato"
-        android:layout_width="342dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="69dp"
-        android:contentDescription="@string/img_main_desc"
-        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="202dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="193dp"
-        android:text="@string/label_imagen_receta"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#9D2B2B"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imgPlato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelsContainer" />
 
     <TextView
         android:id="@+id/textView3"
@@ -161,7 +129,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="193dp"
         android:text="@string/label_etiquetas"
-        android:textColor="#FFFFFF"
+        android:textColor="#507561"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/labelsContainer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +144,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="193dp"
         android:text="Pasos para el plato:"
-        android:textColor="#FFFFFF"
+        android:textColor="#507561"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/etPasosReceta"
         app:layout_constraintEnd_toEndOf="parent"
