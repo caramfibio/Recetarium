@@ -10,7 +10,35 @@
     <!-- Espacio superior -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="16dp"/>
+
+    <!-- Botones Generar y Presets (dentro de Menús semanales) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <Button
+            android:id="@+id/btnGenerarSemana"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/menu_generar"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#639918" />
+
+        <Button
+            android:id="@+id/btnPresetsSemana"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/presets"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#5A9A1F" />
+
+    </LinearLayout>
 
     <!-- ===== SEMANA 1 ===== -->
     <LinearLayout

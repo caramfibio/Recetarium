@@ -37,6 +37,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         holder.tvSnippet.setText(snippet.length() > 80 ? snippet.substring(0, 80) + "..." : snippet);
         // Fecha eliminada: no mostrar información de fecha
         holder.tvDate.setText("");
+        // Abrir la pantalla de ver receta al pulsar la tarjeta
+        holder.itemView.setOnClickListener(v -> {
+            android.content.Context ctx = v.getContext();
+            android.content.Intent intent = new android.content.Intent(ctx, formulario_verReceta.class);
+            intent.putExtra("viewId", r.getViewId());
+            ctx.startActivity(intent);
+        });
     }
 
     @Override

@@ -29,6 +29,12 @@ public class lista_recetas_activity extends AppCompatActivity {
             return insets;
         });
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) setSupportActionBar(toolbar);
+
+        android.widget.Button btnVolverLista = findViewById(R.id.btnVolverLista);
+        if (btnVolverLista != null) btnVolverLista.setOnClickListener(v -> finish());
+
         RecyclerView rv = findViewById(R.id.rvRecetas);
         rv.setLayoutManager(new LinearLayoutManager(this));
 

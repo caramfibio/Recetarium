@@ -1,9 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RECETARIUM2</string>
-    <string name="btn_gestion">Gestión de menús / recetas</string>
+    <string name="btn_gestion">Receta</string>
     <string name="btn_menus_semanales">Menús semanales</string>
     <string name="img_main_desc">Logo Recetarium</string>
     <string name="recetarium_title">Recetarium</string>
     <string name="crear_receta">Crear receta</string>
     <string name="ver_recetas">Ver recetas</string>
+
+    <!-- New strings for forms -->
+    <string name="label_nombre_receta">Nombre de la receta:</string>
+    <string name="btn_volver">Volver</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="hint_name">Ej. Sopa de verduras</string>
+    <string name="label_imagen_receta">Imagen de la receta:</string>
+    <string name="label_etiquetas">Etiquetas:</string>
+    <string name="label_pasos">Pasos para el plato:</string>
+    <string name="label_dish">Dish: %1$s</string>
+    <string name="label_time">Time: %1$s</string>
+    <string name="label_foodtype">FoodType: %1$s</string>
+    <string name="msg_receta_guardada">Receta guardada</string>
+    <string name="msg_fecha_no_valida">Fecha no válida</string>
+    <string name="msg_no_hay_receta">No hay receta</string>
+    <string name="menu_generar">Generar</string>
+    <string name="menu_editar">Editar</string>
+    <string name="menu_salir">Salir</string>
+    <string name="presets">Presets</string>
+    <string name="presets_help">Aquí irán los presets. (No implementado aún)</string>
 </resources>

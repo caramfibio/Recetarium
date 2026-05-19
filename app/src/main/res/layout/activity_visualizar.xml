@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".visualizar_activity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvTituloRecetarium"
         android:layout_width="0dp"
@@ -15,7 +25,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp" />
@@ -38,6 +48,19 @@
         android:layout_height="wrap_content"
         android:text="@string/ver_recetas"
         app:layout_constraintTop_toBottomOf="@id/btnCrearReceta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón Volver (mantener) debajo de Ver recetas -->
+    <Button
+        android:id="@+id/btnVolverMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_volver"
+        app:layout_constraintTop_toBottomOf="@id/btnVerRecetas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="24dp"

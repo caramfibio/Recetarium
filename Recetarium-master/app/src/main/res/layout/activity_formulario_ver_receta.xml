@@ -15,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="193dp"
-        android:text="Nombre de la receta:"
+        android:text="@string/label_nombre_receta"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/etNombrePlato"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="46dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#832D2D"
-        android:text="Volver"
+        android:text="@string/btn_volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnGuardarReceta"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#6CC324"
-        android:text="Guardar"
+        android:text="@string/btn_guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnVolver"
@@ -62,7 +62,8 @@
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="@string/hint_name"
+        android:autofillHints="name"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,28 +79,49 @@
         android:layout_marginBottom="18dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="@string/label_pasos"
+        android:autofillHints="postalAddress"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="326dp"
-        android:layout_height="114dp"
+    <LinearLayout
+        android:id="@+id/labelsContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/textView4">
+
+        <TextView
+            android:id="@+id/tvDish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvFoodType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgPlato"
@@ -128,7 +150,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imgPlato"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/labelsContainer" />
 
     <TextView
         android:id="@+id/textView3"
@@ -140,7 +162,7 @@
         android:text="Etiquetas:"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+        app:layout_constraintBottom_toTopOf="@+id/labelsContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasosReceta" />

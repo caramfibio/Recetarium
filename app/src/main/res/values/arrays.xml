@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Placeholder empty array; actual spinner items will be populated from code using enums -->
+    <string-array name="empty_array">
+        <!-- placeholder entry to satisfy Android resource linking; real items are set in code -->
+        <item>_</item>
+    </string-array>
+</resources>
+
+
