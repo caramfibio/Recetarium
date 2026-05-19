@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3a3a3a">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Título de la semana -->
+        <TextView
+            android:id="@+id/tvTituloSemana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Semana del 04 – 10 de Mayo 2026"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Fila 1: LUNES y MARTES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <!-- LUNES -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LUNES"
+                    android:background="#5BC8C8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvLunes"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- MARTES -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MARTES"
+                    android:background="#5BC8C8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvMartes"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Fila 2: MIERCOLES y JUEVES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <!-- MIERCOLES -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MIERCOLES"
+                    android:background="#E8C840"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvMiercoles"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- JUEVES -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="JUEVES"
+                    android:background="#E05A5A"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvJueves"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Fila 3: VIERNES y SABADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <!-- VIERNES -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="VIERNES"
+                    android:background="#5BC8C8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvViernes"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- SABADO -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SABADO"
+                    android:background="#5BC8C8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvSabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="vacio"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Fila 4: DOMINGO (centrado) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DOMINGO"
+                android:background="#5BC8C8"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvDomingo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#F5F5F5"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="vacio"
+                android:textColor="#333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Botón Volver -->
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#5CB85C"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

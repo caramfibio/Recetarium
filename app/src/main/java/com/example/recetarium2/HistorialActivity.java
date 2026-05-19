@@ -132,8 +132,8 @@ public class HistorialActivity extends AppCompatActivity {
                 // Celda de contenido (verde claro si tiene receta, gris si no)
                 View celda = new View(this);
                 int diaReal = diaInicio + i; // día real dentro del mes
-                String contenidoReceta = repo.getRecipe(anioActual, mesActual, diaReal);
-                boolean tieneReceta = contenidoReceta != null && !contenidoReceta.isEmpty();
+                // Ya no usamos fecha para las recetas; marcamos celda como "tiene receta" si hay cualquier receta almacenada
+                boolean tieneReceta = !repo.getAllRecipes().isEmpty();
                 celda.setBackgroundColor(tieneReceta ?
                         Color.parseColor("#C8E6C9") : Color.parseColor("#D9D9D9"));
                 LinearLayout.LayoutParams paramsCelda = new LinearLayout.LayoutParams(
@@ -201,13 +201,9 @@ public class HistorialActivity extends AppCompatActivity {
     private boolean semanaContieneReceta(com.example.recetarium2.data.RecipeRepository repo,
                                          int anio, int mes,
                                          int diaInicio, int diaFin) {
-        for (int dia = diaInicio; dia <= diaFin; dia++) {
-            String contenido = repo.getRecipe(anio, mes, dia);
-            if (contenido != null && !contenido.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
+        // Dado que las recetas ya no están vinculadas a fechas, consideramos que una semana contiene receta
+        // si existe al menos una receta almacenada.
+        return !repo.getAllRecipes().isEmpty();
     }
 
     // ...existing code...

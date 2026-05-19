@@ -32,20 +32,23 @@ public class formulario_recetarium extends AppCompatActivity {
         Button btnGuardar = findViewById(R.id.btnGuardarReceta);
         Button btnVolver = findViewById(R.id.btnVolver);
 
-        // Leer extras (anio, mes, dia) pasados desde dias_activity
+        // Leer extra viewId pasado desde dias_activity
         Intent intent = getIntent();
-        final int anio = intent.getIntExtra("anio", -1);
-        final int mes = intent.getIntExtra("mes", -1);
-        final int dia = intent.getIntExtra("dia", -1);
+        final int viewId = intent.getIntExtra("viewId", -1);
 
         btnGuardar.setOnClickListener(v -> {
-            if (anio < 0 || mes < 0 || dia < 0) {
-                Toast.makeText(this, "Fecha no válida", Toast.LENGTH_SHORT).show();
-                return;
-            }
             String contenido = etNombre.getText().toString() + "\n" + etPasos.getText().toString();
             com.example.recetarium2.data.RecipeRepository repo = new com.example.recetarium2.data.RecipeRepositoryImpl(this);
-            repo.saveRecipe(anio, mes, dia, contenido);
+            if (viewId < 0) {
+                // Guardar como nueva receta: repo asignará un viewId automáticamente
+                int assigned = repo.saveRecipeNew(contenido);
+                if (assigned < 0) {
+                    Toast.makeText(this, "Error al guardar receta", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } else {
+                repo.saveRecipe(viewId, contenido);
+            }
             Toast.makeText(this, "Receta guardada", Toast.LENGTH_SHORT).show();
             finish();
         });

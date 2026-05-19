@@ -35,7 +35,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         String snippet = parts.length > 1 ? parts[1] : "";
         holder.tvTitle.setText(title);
         holder.tvSnippet.setText(snippet.length() > 80 ? snippet.substring(0, 80) + "..." : snippet);
-        holder.tvDate.setText(String.format(java.util.Locale.getDefault(), "%04d-%02d-%02d", r.getYear(), r.getMonth(), r.getDay()));
+        // Fecha eliminada: no mostrar información de fecha
+        holder.tvDate.setText("");
     }
 
     @Override

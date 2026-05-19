@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RECETARIUM2</string>
+    <string name="btn_gestion">Gestión de menús / recetas</string>
+    <string name="btn_menus_semanales">Menús semanales</string>
+    <string name="img_main_desc">Logo Recetarium</string>
+    <string name="recetarium_title">Recetarium</string>
+    <string name="crear_receta">Crear receta</string>
+    <string name="ver_recetas">Ver recetas</string>
+</resources>

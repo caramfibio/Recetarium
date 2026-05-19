@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_ver_receta"
+        android:title="Ver receta" />
+    <item
+        android:id="@+id/menu_aniadir_receta"
+        android:title="Añadir receta" />
+    <item
+        android:id="@+id/menu_borrar_receta"
+        android:title="Borrar receta" />
+</menu>
+
