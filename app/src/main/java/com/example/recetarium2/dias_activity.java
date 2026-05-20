@@ -194,7 +194,7 @@ public class dias_activity extends AppCompatActivity {
 
             int[] ids = new int[]{R.id.tvLunes, R.id.tvMartes, R.id.tvMiercoles, R.id.tvJueves, R.id.tvViernes, R.id.tvSabado, R.id.tvDomingo};
             java.util.Random rnd = new java.util.Random();
-            // read week presets (per-day lunch/dinner selections)
+            // read week presets (per-day lunch/dinner selections - now storing FoodType labels)
             SharedPreferences weekPrefs = getSharedPreferences("menu_presets_week", Context.MODE_PRIVATE);
             // keys mapping for each day
             String[] lunchKeys = new String[]{"mon_lunch","tue_lunch","wed_lunch","thu_lunch","fri_lunch","sat_lunch","sun_lunch"};
@@ -202,30 +202,69 @@ public class dias_activity extends AppCompatActivity {
 
             for (int dayIndex = 0; dayIndex < ids.length; dayIndex++) {
                 int vid = ids[dayIndex];
-                int presetLunchId = weekPrefs.getInt(lunchKeys[dayIndex], -1);
-                int presetDinnerId = weekPrefs.getInt(dinnerKeys[dayIndex], -1);
+                String presetLunchLabel = weekPrefs.getString(lunchKeys[dayIndex], "NONE");
+                String presetDinnerLabel = weekPrefs.getString(dinnerKeys[dayIndex], "NONE");
 
-                if (presetLunchId > 0 || presetDinnerId > 0) {
-                    // Build combined content from selected presets. If one is missing, try to pick from pool.
+                if ((!presetLunchLabel.equals("NONE") && !presetLunchLabel.isEmpty()) || 
+                    (!presetDinnerLabel.equals("NONE") && !presetDinnerLabel.isEmpty())) {
+                    // Filter pool for lunch and dinner based on FoodType labels
+                    java.util.List<com.example.recetarium2.data.RecipeRecord> lunchCandidates = new java.util.ArrayList<>();
+                    java.util.List<com.example.recetarium2.data.RecipeRecord> dinnerCandidates = new java.util.ArrayList<>();
+
+                    for (com.example.recetarium2.data.RecipeRecord r : pool) {
+                        String c = r.getContent();
+                        int idx = c.indexOf("Etiquetas:");
+                        String etiquetas = idx >= 0 ? c.substring(idx) : "";
+                        
+                        if (!presetLunchLabel.equals("NONE") && !presetLunchLabel.isEmpty()) {
+                            if (etiquetas.contains("FoodType=" + presetLunchLabel)) {
+                                lunchCandidates.add(r);
+                            }
+                        } else {
+                            lunchCandidates.add(r);
+                        }
+                        
+                        if (!presetDinnerLabel.equals("NONE") && !presetDinnerLabel.isEmpty()) {
+                            if (etiquetas.contains("FoodType=" + presetDinnerLabel)) {
+                                dinnerCandidates.add(r);
+                            }
+                        } else {
+                            dinnerCandidates.add(r);
+                        }
+                    }
+
                     String lunchContent = "";
                     String dinnerContent = "";
-                    if (presetLunchId > 0) lunchContent = repo.getRecipe(presetLunchId);
-                    if (presetDinnerId > 0) dinnerContent = repo.getRecipe(presetDinnerId);
 
-                    // If one of them empty, try to pick a candidate from pool (excluding any preset ids)
-                    java.util.List<com.example.recetarium2.data.RecipeRecord> poolCandidates = new java.util.ArrayList<>(pool);
-                    // remove presets from candidate pool
-                    poolCandidates.removeIf(r -> (presetLunchId > 0 && r.getViewId() == presetLunchId) || (presetDinnerId > 0 && r.getViewId() == presetDinnerId));
-                    if ((lunchContent == null || lunchContent.isEmpty()) && !poolCandidates.isEmpty()) {
-                        com.example.recetarium2.data.RecipeRecord r = poolCandidates.get(rnd.nextInt(poolCandidates.size()));
+                    if (!lunchCandidates.isEmpty()) {
+                        com.example.recetarium2.data.RecipeRecord r = lunchCandidates.get(rnd.nextInt(lunchCandidates.size()));
                         lunchContent = r.getContent();
-                        // remove chosen so dinner won't be same
-                        poolCandidates.remove(r);
                     }
-                    if ((dinnerContent == null || dinnerContent.isEmpty()) && !poolCandidates.isEmpty()) {
-                        com.example.recetarium2.data.RecipeRecord r = poolCandidates.get(rnd.nextInt(poolCandidates.size()));
-                        dinnerContent = r.getContent();
+                    if (!dinnerCandidates.isEmpty() && (!lunchContent.isEmpty() || lunchCandidates.isEmpty())) {
+                        // Pick from dinner candidates, avoiding the lunch pick
+                        com.example.recetarium2.data.RecipeRecord r = null;
+                        if (lunchContent.isEmpty()) {
+                            r = dinnerCandidates.get(rnd.nextInt(dinnerCandidates.size()));
+                        } else {
+                            // Try to pick a different recipe
+                            boolean found = false;
+                            for (int attempts = 0; attempts < 5; attempts++) {
+                                com.example.recetarium2.data.RecipeRecord dinnerRecipe = dinnerCandidates.get(rnd.nextInt(dinnerCandidates.size()));
+                                String candidateName = extractName(dinnerRecipe.getContent());
+                                String lunchName = extractName(lunchContent);
+                                if (!candidateName.equals(lunchName)) {
+                                    r = dinnerRecipe;
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found && !dinnerCandidates.isEmpty()) {
+                                r = dinnerCandidates.get(0);
+                            }
+                        }
+                        if (r != null) dinnerContent = r.getContent();
                     }
+
                     String combined = "";
                     if (lunchContent != null && !lunchContent.isEmpty()) combined = lunchContent;
                     if (dinnerContent != null && !dinnerContent.isEmpty()) {
@@ -233,11 +272,13 @@ public class dias_activity extends AppCompatActivity {
                         else combined = dinnerContent;
                     }
                     if (combined.isEmpty()) {
-                        // fallback to random selection
-                        com.example.recetarium2.data.RecipeRecord r1 = pool.get(rnd.nextInt(pool.size()));
-                        com.example.recetarium2.data.RecipeRecord r2 = pool.size() > 1 ? pool.get((rnd.nextInt(pool.size()))) : r1;
-                        while (pool.size() > 1 && r2.getViewId() == r1.getViewId()) r2 = pool.get(rnd.nextInt(pool.size()));
-                        combined = (r1.getContent() == null ? "" : r1.getContent()) + "\n\n" + (r2.getContent() == null ? "" : r2.getContent());
+                        // fallback to random selection from pool if no candidates matched the labels
+                        if (!pool.isEmpty()) {
+                            com.example.recetarium2.data.RecipeRecord r1 = pool.get(rnd.nextInt(pool.size()));
+                            com.example.recetarium2.data.RecipeRecord r2 = pool.size() > 1 ? pool.get((rnd.nextInt(pool.size()))) : r1;
+                            while (pool.size() > 1 && r2.getViewId() == r1.getViewId()) r2 = pool.get(rnd.nextInt(pool.size()));
+                            combined = (r1.getContent() == null ? "" : r1.getContent()) + "\n\n" + (r2.getContent() == null ? "" : r2.getContent());
+                        }
                     }
                     repo.saveRecipe(vid, combined);
                 } else {

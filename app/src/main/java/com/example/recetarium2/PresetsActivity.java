@@ -28,7 +28,7 @@ public class PresetsActivity extends AppCompatActivity {
             return insets;
         });
 
-        // New behavior: allow selecting a lunch and dinner recipe for each weekday
+        // New behavior: allow selecting FoodType labels for lunch and dinner for each weekday
         int[] spinnerIds = new int[]{
                 R.id.spinnerMonLunch, R.id.spinnerMonDinner,
                 R.id.spinnerTueLunch, R.id.spinnerTueDinner,
@@ -39,18 +39,12 @@ public class PresetsActivity extends AppCompatActivity {
                 R.id.spinnerSunLunch, R.id.spinnerSunDinner
         };
 
-        final com.example.recetarium2.data.RecipeRepository repo = new com.example.recetarium2.data.RecipeRepositoryImpl(this);
-        java.util.List<com.example.recetarium2.data.RecipeRecord> all = repo.getAllRecipes();
+        // Build list of available FoodType labels
         java.util.List<String> labels = new java.util.ArrayList<>();
-        java.util.List<Integer> ids = new java.util.ArrayList<>();
         // first entry = NONE
-        labels.add("NONE"); ids.add(-1);
-        if (all != null) {
-            for (com.example.recetarium2.data.RecipeRecord r : all) {
-                String name = extractName(r.getContent());
-                labels.add(name == null || name.isEmpty() ? ("receta-" + r.getViewId()) : name);
-                ids.add(r.getViewId());
-            }
+        labels.add("NONE");
+        for (com.example.recetarium2.domain.food.FoodType ft : com.example.recetarium2.domain.food.FoodType.values()) {
+            labels.add(ft.name());
         }
 
         SharedPreferences prefs = getSharedPreferences("menu_presets_week", Context.MODE_PRIVATE);
@@ -64,9 +58,9 @@ public class PresetsActivity extends AppCompatActivity {
             // restore selection from prefs if present
             if (s != null) {
                 String key = getPrefKeyForSpinnerId(sid);
-                int saved = prefs.getInt(key, -1);
+                String saved = prefs.getString(key, "NONE");
                 int pos = 0;
-                for (int i = 0; i < ids.size(); i++) if (ids.get(i) == saved) { pos = i; break; }
+                for (int i = 0; i < labels.size(); i++) if (labels.get(i).equals(saved)) { pos = i; break; }
                 s.setSelection(pos);
             }
         }
@@ -78,9 +72,9 @@ public class PresetsActivity extends AppCompatActivity {
                 Spinner s = findViewById(sid);
                 if (s == null) continue;
                 int selPos = s.getSelectedItemPosition();
-                int selViewId = ids.get(selPos);
+                String selLabel = (String) s.getSelectedItem();
                 String key = getPrefKeyForSpinnerId(sid);
-                e.putInt(key, selViewId);
+                e.putString(key, selLabel != null ? selLabel : "NONE");
             }
             e.apply();
             Toast.makeText(this, "Presets guardados", Toast.LENGTH_SHORT).show();
@@ -91,18 +85,6 @@ public class PresetsActivity extends AppCompatActivity {
         if (btnVolver != null) btnVolver.setOnClickListener(v -> finish());
     }
 
-    private static String extractName(String content) {
-        if (content == null) return "";
-        String[] lines = content.split("\\r?\\n");
-        for (String l : lines) {
-            if (l == null) continue;
-            String t = l.trim();
-            if (t.isEmpty()) continue;
-            if (t.startsWith("Etiquetas:")) continue;
-            return t;
-        }
-        return content.trim();
-    }
 
     private String getPrefKeyForSpinnerId(int sid) {
         // Use if/else instead of switch because resource ids may not be compile-time constants
