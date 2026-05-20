@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnRecetariumMenu = findViewById(R.id.BtnRecetarium);
         btnHistorialMenu = findViewById(R.id.BtnHistorial);
+        final com.example.recetarium2.data.RecipeRepository repo = new com.example.recetarium2.data.RecipeRepositoryImpl(this);
+
+
 
         // Botón principal: gestión de menús / recetas
         btnRecetariumMenu.setOnClickListener(new View.OnClickListener() {
@@ -43,11 +47,20 @@ public class MainActivity extends AppCompatActivity {
         btnHistorialMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, dias_activity.class);
-                startActivity(intent);
+                java.util.List<com.example.recetarium2.data.RecipeRecord> allRecipes = repo.getAllRecipes();
+                int totalRecetas = allRecipes != null ? allRecipes.size() : 0;
+
+                if (totalRecetas >= 14) {
+                    Intent intent = new Intent(MainActivity.this, dias_activity.class);
+                    startActivity(intent);
+                }else{
+
+                    Toast.makeText(MainActivity.this, String.format(java.util.Locale.getDefault(), "necesitas 14 recetas mas para generar recetas (%d/14)", totalRecetas), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
 
     }
-}
+    }
