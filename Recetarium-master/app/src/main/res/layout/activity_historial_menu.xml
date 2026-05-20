@@ -45,7 +45,7 @@
       android:layout_width="160dp"
       android:layout_height="40dp"
       android:layout_gravity="center"
-      android:text="Volver"
+      android:text="@string/btn_volver"
       android:textColor="#FFFFFF"
       android:backgroundTint="#5CB85C"
       android:layout_marginTop="12dp"

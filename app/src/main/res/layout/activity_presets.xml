@@ -30,15 +30,170 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvPresetsHelp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSavePresets"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- For each weekday, provide two spinners: comida (lunch) and cena (dinner) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerMonLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerMonDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Martes"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerTueLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerTueDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miércoles"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerWedLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerWedDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jueves"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerThuLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerThuDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viernes"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerFriLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerFriDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sábado"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerSatLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerSatDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Domingo"
+                android:paddingTop="8dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinnerSunLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/spinnerSunDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSavePresets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar presets"
+        app:layout_constraintBottom_toTopOf="@id/btnVolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#8AC8A6"
+        android:textColor="#FFFFFF" />
+
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_volver"
-        app:layout_constraintTop_toBottomOf="@id/tvPresetsHelp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#8AC8A6"
+        android:textColor="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

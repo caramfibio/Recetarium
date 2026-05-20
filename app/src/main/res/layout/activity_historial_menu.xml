@@ -48,7 +48,7 @@
       android:layout_marginTop="12dp"
       android:layout_marginBottom="24dp"
       android:backgroundTint="#8AC8A6"
-      android:text="Volver"
+      android:text="@string/btn_volver"
       android:textColor="#8AC8A6" />
 
 </LinearLayout>

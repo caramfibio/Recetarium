@@ -16,13 +16,14 @@ import java.io.OutputStream;
 public class RecetasDbHelper extends SQLiteOpenHelper {
     private static final String TAG = "RecetasDbHelper";
     private static final String DB_NAME = "recetas.db";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
 
     public static final String TABLE_RECIPES = "recipes";
     public static final String COL_ID = "id";
     // Reemplazamos las columnas de fecha por una columna que identifica la casilla/view
     public static final String COL_VIEW_ID = "view_id";
     public static final String COL_CONTENT = "content";
+    public static final String COL_CONTENT2 = "content2";
 
     private final Context context;
 
@@ -38,7 +39,8 @@ public class RecetasDbHelper extends SQLiteOpenHelper {
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_RECIPES + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_VIEW_ID + " INTEGER UNIQUE, " +
-                COL_CONTENT + " TEXT" +
+                COL_CONTENT + " TEXT, " +
+                COL_CONTENT2 + " TEXT" +
                 ");";
         db.execSQL(sql);
         // Índice/constraint en view_id (ya definido como UNIQUE en la columna)
@@ -98,21 +100,35 @@ public class RecetasDbHelper extends SQLiteOpenHelper {
                 }
             }
         }
+        if (oldVersion < 3) {
+            // Add second content column for storing two recipes per view
+            try {
+                db.execSQL("ALTER TABLE " + TABLE_RECIPES + " ADD COLUMN " + COL_CONTENT2 + " TEXT;");
+            } catch (Exception e) {
+                // ignore if column exists or operation fails
+            }
+        }
     }
 
     public String getRecipeContent(int viewId) {
         SQLiteDatabase db = getReadableDatabase();
         String content = "";
         Cursor c = null;
-        try {
-            c = db.query(TABLE_RECIPES, new String[]{COL_CONTENT}, COL_VIEW_ID + "=?",
-                    new String[]{String.valueOf(viewId)}, null, null, null);
-            if (c != null && c.moveToFirst()) {
-                content = c.getString(0);
+            try {
+                c = db.query(TABLE_RECIPES, new String[]{COL_CONTENT, COL_CONTENT2}, COL_VIEW_ID + "=?",
+                        new String[]{String.valueOf(viewId)}, null, null, null);
+                if (c != null && c.moveToFirst()) {
+                    String c1 = c.getString(0);
+                    String c2 = c.getString(1);
+                    if (c2 != null && !c2.isEmpty()) {
+                        content = (c1 == null ? "" : c1) + "\n\n" + c2;
+                    } else {
+                        content = c1;
+                    }
+                }
+            } finally {
+                if (c != null) c.close();
             }
-        } finally {
-            if (c != null) c.close();
-        }
         return content == null ? "" : content;
     }
 
@@ -120,7 +136,15 @@ public class RecetasDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         android.content.ContentValues vals = new android.content.ContentValues();
         vals.put(COL_VIEW_ID, viewId);
-        vals.put(COL_CONTENT, content);
+        // Support storing two recipes separated by a blank line
+        if (content != null && content.contains("\n\n")) {
+            String[] parts = content.split("\\n\\n", 2);
+            vals.put(COL_CONTENT, parts[0]);
+            vals.put(COL_CONTENT2, parts.length > 1 ? parts[1] : "");
+        } else {
+            vals.put(COL_CONTENT, content);
+            vals.put(COL_CONTENT2, "");
+        }
         // Primero intentamos actualizar
         int updated = db.update(TABLE_RECIPES, vals, COL_VIEW_ID + "=?",
                 new String[]{String.valueOf(viewId)});
@@ -142,7 +166,39 @@ public class RecetasDbHelper extends SQLiteOpenHelper {
     public int saveRecipeContentNew(String content) {
         SQLiteDatabase db = getWritableDatabase();
         android.content.ContentValues vals = new android.content.ContentValues();
-        vals.put(COL_CONTENT, content);
+        String c1 = "";
+        String c2 = "";
+        if (content != null && content.contains("\n\n")) {
+            String[] parts = content.split("\\n\\n", 2);
+            c1 = parts[0] == null ? "" : parts[0];
+            c2 = parts.length > 1 && parts[1] != null ? parts[1] : "";
+        } else if (content != null) {
+            c1 = content;
+            c2 = "";
+        }
+
+        // Avoid inserting duplicate recipes: if an identical (content,content2) already exists, return its viewId
+        android.database.Cursor lookup = null;
+        try {
+            lookup = db.query(TABLE_RECIPES, new String[]{COL_ID, COL_VIEW_ID},
+                    COL_CONTENT + "=? AND " + COL_CONTENT2 + "=?",
+                    new String[]{c1, c2}, null, null, null);
+            if (lookup != null && lookup.moveToFirst()) {
+                int foundId = lookup.getInt(0);
+                int foundViewId = -1;
+                try {
+                    foundViewId = lookup.getInt(1);
+                } catch (Exception e) {
+                    // ignore
+                }
+                return foundViewId > 0 ? foundViewId : foundId;
+            }
+        } finally {
+            if (lookup != null) lookup.close();
+        }
+
+        vals.put(COL_CONTENT, c1);
+        vals.put(COL_CONTENT2, c2);
         long newId = db.insert(TABLE_RECIPES, null, vals);
         if (newId == -1) return -1;
         // Set view_id = id for the new row

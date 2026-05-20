@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnHistorialMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SeleccionarSemanaActivity.class);
+                Intent intent = new Intent(MainActivity.this, dias_activity.class);
                 startActivity(intent);
             }
         });

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.app.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +43,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             android.content.Context ctx = v.getContext();
             android.content.Intent intent = new android.content.Intent(ctx, formulario_verReceta.class);
             intent.putExtra("viewId", r.getViewId());
-            ctx.startActivity(intent);
+            if (ctx instanceof Activity) {
+                ((Activity) ctx).startActivityForResult(intent, 1002);
+            } else {
+                ctx.startActivity(intent);
+            }
         });
     }
 

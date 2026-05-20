@@ -3,17 +3,17 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_generar"
-        android:title="Generar"
+        android:title="@string/menu_generar"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_editar"
-        android:title="Editar"
+        android:title="@string/menu_editar"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_salir"
-        android:title="Salir"
+        android:title="@string/menu_salir"
         app:showAsAction="never" />
 </menu>
 

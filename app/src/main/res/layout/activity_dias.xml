@@ -11,17 +11,38 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Título de la semana -->
-        <TextView
-            android:id="@+id/tvTituloSemana"
+        <!-- Título eliminado: ahora no se muestra la cabecera de semana -->
+
+        <!-- Botones Generar y Presets (movidos desde activity_semanas) -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:text="Semana del 04 – 10 de Mayo 2026"
-            android:textColor="#507561"
-            android:textSize="16sp" />
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnGenerarSemana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/menu_generar"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#8AC8A6"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnPresetsSemana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/presets"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#8AC8A6"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
 
         <!-- Fila 1: LUNES y MARTES -->
         <LinearLayout
@@ -46,7 +67,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="LUNES"
+                    android:text="@string/day_lunes"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -57,7 +78,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -78,7 +99,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="MARTES"
+                    android:text="@string/day_martes"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -89,7 +110,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -118,7 +139,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="MIERCOLES"
+                    android:text="@string/day_miercoles"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -129,7 +150,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -150,7 +171,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="JUEVES"
+                    android:text="@string/day_jueves"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -161,7 +182,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -190,7 +211,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="VIERNES"
+                    android:text="@string/day_viernes"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -201,7 +222,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -222,7 +243,7 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="SABADO"
+                    android:text="@string/day_sabado"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp" />
 
@@ -233,7 +254,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -254,7 +275,7 @@
                 android:gravity="center"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:text="DOMINGO"
+                 android:text="@string/day_domingo"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -265,7 +286,7 @@
                 android:background="#F5F5F5"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="vacio"
+                 android:text="@string/empty_text"
                 android:textColor="#333333"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -278,7 +299,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:backgroundTint="#8AC8A6"
-            android:text="Volver"
+            android:text="@string/btn_volver"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 

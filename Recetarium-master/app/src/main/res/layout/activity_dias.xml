@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LUNES"
+                    android:text="@string/day_lunes"
                     android:background="#5BC8C8"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -57,7 +57,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -73,7 +73,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MARTES"
+                    android:text="@string/day_martes"
                     android:background="#5BC8C8"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -89,7 +89,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -113,7 +113,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MIERCOLES"
+                    android:text="@string/day_miercoles"
                     android:background="#E8C840"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -129,7 +129,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="JUEVES"
+                    android:text="@string/day_jueves"
                     android:background="#E05A5A"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -161,7 +161,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -185,7 +185,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="VIERNES"
+                    android:text="@string/day_viernes"
                     android:background="#5BC8C8"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -201,7 +201,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -217,7 +217,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SABADO"
+                    android:text="@string/day_sabado"
                     android:background="#5BC8C8"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
@@ -233,7 +233,7 @@
                     android:background="#F5F5F5"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="vacio"
+                    android:text="@string/empty_text"
                     android:textColor="#333333"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -249,7 +249,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DOMINGO"
+                android:text="@string/day_domingo"
                 android:background="#5BC8C8"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp"
@@ -265,7 +265,7 @@
                 android:background="#F5F5F5"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="vacio"
+                android:text="@string/empty_text"
                 android:textColor="#333333"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -276,7 +276,7 @@
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:text="Volver"
+            android:text="@string/btn_volver"
             android:textColor="#FFFFFF"
             android:backgroundTint="#5CB85C"
             android:textSize="14sp"

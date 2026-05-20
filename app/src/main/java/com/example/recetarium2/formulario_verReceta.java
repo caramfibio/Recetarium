@@ -3,8 +3,8 @@ package com.example.recetarium2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,19 +25,21 @@ public class formulario_verReceta extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Referencias UI
-        EditText etNombre = findViewById(R.id.etNombrePlato);
-        EditText etPasos = findViewById(R.id.etPasosReceta);
+        // Referencias UI (read-only view)
+        TextView etNombre = findViewById(R.id.etNombrePlato);
+        TextView etPasos = findViewById(R.id.etPasosReceta);
         TextView tvDish = findViewById(R.id.tvDish);
         TextView tvTime = findViewById(R.id.tvTime);
         TextView tvFoodType = findViewById(R.id.tvFoodType);
         Button btnVolver = findViewById(R.id.btnVolver);
+        Button btnEditar = findViewById(R.id.btnEditar);
+        Button btnEliminar = findViewById(R.id.btnEliminar);
 
         Intent intent = getIntent();
         final int viewId = intent.getIntExtra("viewId", -1);
 
         if (viewId < 0) {
-            Toast.makeText(this, "viewId no válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_viewid_invalid), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -105,10 +107,41 @@ public class formulario_verReceta extends AppCompatActivity {
             etPasos.setText(pasos);
         }
 
-        // Evitar edición al ver
-        etNombre.setEnabled(false);
-        etPasos.setEnabled(false);
+        // La vista usa TextView, por tanto ya es no-editable
+        // Habilitar scroll interno para el TextView de pasos (si es necesario)
+        etPasos.setMovementMethod(new ScrollingMovementMethod());
 
         btnVolver.setOnClickListener(v -> finish());
+
+        // Editar: abrir formulario de edición pasando viewId
+        if (btnEditar != null) btnEditar.setOnClickListener(v -> {
+            Intent intentEdit = new Intent(this, formulario_recetarium.class);
+            intentEdit.putExtra("viewId", viewId);
+            // Start for result so we can refresh the view when editing finishes
+            startActivityForResult(intentEdit, 1003);
+        });
+
+        // Eliminar: borrar la receta de la DB y cerrar
+        if (btnEliminar != null) btnEliminar.setOnClickListener(v -> {
+            // reuse repo instance declared above
+            repo.deleteRecipe(viewId);
+            Toast.makeText(this, getString(R.string.msg_receta_eliminada), Toast.LENGTH_SHORT).show();
+            // Signal deletion to caller and finish so parent can refresh immediately
+            Intent data = new Intent();
+            data.putExtra("deletedViewId", viewId);
+            setResult(RESULT_OK, data);
+            finish();
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // If edit finished successfully, reload the content from DB and refresh the UI
+        if (requestCode == 1003 && resultCode == RESULT_OK) {
+            // Editing finished in the child form: notify parent and close this view so callers refresh
+            setResult(RESULT_OK);
+            finish();
+        }
     }
 }

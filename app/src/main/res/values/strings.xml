@@ -27,4 +27,22 @@
     <string name="menu_salir">Salir</string>
     <string name="presets">Presets</string>
     <string name="presets_help">Aquí irán los presets. (No implementado aún)</string>
+    <!-- Translated / extracted strings -->
+    <string name="empty_text">vacío</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="msg_no_recetas_guardadas">No hay recetas guardadas. Añade recetas antes de generar.</string>
+    <string name="msg_menu_generado">Menú semanal generado</string>
+    <string name="day_lunes">LUNES</string>
+    <string name="day_martes">MARTES</string>
+    <string name="day_miercoles">MIÉRCOLES</string>
+    <string name="day_jueves">JUEVES</string>
+    <string name="day_viernes">VIERNES</string>
+    <string name="day_sabado">SÁBADO</string>
+    <string name="day_domingo">DOMINGO</string>
+    <string name="label_dish_plain">Dish:</string>
+    <string name="label_time_plain">Time:</string>
+    <string name="label_foodtype_plain">FoodType:</string>
+    <string name="msg_viewid_invalid">ID de vista no válido</string>
+    <string name="msg_receta_eliminada">Receta eliminada</string>
 </resources>

@@ -88,7 +88,7 @@ public class dias_activity extends AppCompatActivity {
             // Identificamos la casilla por su id de vista (no por fecha)
             int viewId = tv.getId();
             String texto = repo.getRecipe(viewId);
-            tv.setText(texto == null || texto.isEmpty() ? "vacio" : texto);
+            tv.setText(texto == null || texto.isEmpty() ? getString(R.string.empty_text) : texto);
             tv.setTag(Integer.valueOf(viewId)); // guardamos datos para el menú
             registerForContextMenu(tv);
         }
@@ -151,11 +151,11 @@ public class dias_activity extends AppCompatActivity {
                 if (tag instanceof Integer) {
                     int tid = (Integer) tag;
                     if (tid == viewId) {
-                        tv.setText("vacio");
+                        tv.setText(getString(R.string.empty_text));
                         break;
                     }
                 } else if (tv.getId() == viewId) {
-                    tv.setText("vacio");
+                    tv.setText(getString(R.string.empty_text));
                     break;
                 }
             }

@@ -17,15 +17,15 @@
         <activity
             android:name=".formulario_recetarium"
             android:exported="false" />
-        <!-- Corregido: la clase se llama SeleccionarSemanaActivity -->
-        <activity
-            android:name=".SeleccionarSemanaActivity"
-            android:exported="false" />
+        <!-- SeleccionarSemanaActivity eliminada del manifiesto: BtnHistorial abre ahora directamente dias_activity -->
         <activity
             android:name=".visualizar_activity"
             android:exported="false" />
         <activity
             android:name=".lista_recetas_activity"
+            android:exported="false" />
+        <activity
+            android:name=".PresetsActivity"
             android:exported="false" />
         <activity
             android:name=".dias_activity"
